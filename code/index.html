@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Surprise for My Sister ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 25px;
+        max-width: 360px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        animation: fadeIn 2s ease;
+      }
+
+      h1 {
+        color: #ff4d6d;
+        font-size: 26px;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 18px;
+        color: #444;
+        margin-bottom: 15px;
+      }
+
+      p {
+        font-size: 15px;
+        color: #555;
+        line-height: 1.6;
+      }
+
+
+      button {
+        margin-top: 15px;
+        background: linear-gradient(135deg, #ff4d6d, #ff758f);
+        border: none;
+        color: #fff;
+        padding: 12px 22px;
+        font-size: 15px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      button:hover {
+        transform: scale(1.05);
+      }
+
+      .heart {
+        position: fixed;
+        top: -10px;
+        font-size: 20px;
+        animation: fall linear forwards;
+        color: #ff4d6d;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(110vh);
+          opacity: 0;
+        }
+      }
+
+      footer {
+        margin-top: 12px;
+        font-size: 12px;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      if (localStorage.getItem("unlocked") !== "true") {
+        window.location.href = "lock.html";
+      }
+
+      function goNext() {
+  window.location.href = "final.html";
+}
+
+    </script>
+
+    <div class="container">
+      <h1>🎉 Surprise Didi ❤️</h1>
+      <h2>My Supporter</h2>
+
+      <p>
+        Dear Sister,<br />
+        You are not just my sister, you are my best friend, my strength, and my
+        biggest blessing 💖 Thank you for always supporting me.
+      </p>
+
+    
+     
+      <button onclick="playMusic()">Play Surprise 🎶</button>
+
+      <footer>Made with ❤️ by your brother</footer>
+      
+<button onclick="goNext()">One More Surprise 💌</button>
+    </div>
+
+    <!-- OPTIONAL MUSIC -->
+    <!-- Replace music.mp3 -->
+    <audio id="music" src="music.mp3"></audio>
+    
+
+    <script>
+      function playMusic() {
+        document.getElementById("music").play();
+        createHearts();
+      }
+
+
+      function createHearts() {
+        setInterval(() => {
+          const heart = document.createElement("div");
+          heart.classList.add("heart");
+          heart.innerHTML = "❤️";
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+          document.body.appendChild(heart);
+
+          setTimeout(() => {
+            heart.remove();
+          }, 5000);
+        }, 300);
+      }
+    </script>
+
+
+
+  </body>
+</html>

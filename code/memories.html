@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Memories ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    .slider {
+      background: white;
+      padding: 20px;
+      border-radius: 25px;
+      width: 340px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 10px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 20px;
+      margin: 15px 0;
+    }
+
+    p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .controls button {
+      background: linear-gradient(135deg, #ff4d6d, #ff758f);
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      margin: 5px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 18px;
+  color: #ff4d6d;
+  animation: floatUp linear forwards;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-110vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider">
+    <h1>📸 Our Memories</h1>
+    <p>Moments we’ll cherish forever ❤️</p>
+
+    <img id="slide" src="mem1.jpg" alt="Memory">
+
+    <div class="controls">
+      <button onclick="prev()">⬅ Prev</button>
+      <button onclick="next()">Next ➡</button>
+    </div>
+  </div>
+
+  <script>
+    const images = [
+      "mem1.jpg",
+      "mem2.jpg",
+      "mem3.jpg",
+      "mem4.jpg"
+    ];
+
+    let index = 0;
+    const slide = document.getElementById("slide");
+
+    function showImage() {
+      slide.src = images[index];
+    }
+
+    function next() {
+      index = (index + 1) % images.length;
+      showImage();
+    }
+
+    function prev() {
+      index = (index - 1 + images.length) % images.length;
+      showImage();
+    }
+
+    // Auto slideshow
+    setInterval(next, 3000);
+
+    function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  // Create hearts continuously
+  setInterval(createHeart, 400);
+  </script>
+
+</body>
+</html>
